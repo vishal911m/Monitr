@@ -71,7 +71,7 @@ function Profile() {
         </div>
 
         </div>
-        <h3 className='mt-8 font-medium'>Activity</h3>
+        <h3 className='font-medium'>Activity</h3>
       </div>
     </div>
   )
