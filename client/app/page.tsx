@@ -13,18 +13,8 @@ import {motion} from "framer-motion";
 import { container, item } from "@/utils/animations";
 
 export default function Home() {
-  // useRedirect("/login");
-  // const {
-  //   logoutUser,
-  //   user,
-  //   handlerUserInput,    
-  //   userState,
-  //   updateUser,
-  //   emailVerification,
-  //   allUsers,
-  //   deleteUser,
-  // } = useUserContext();
-
+  useRedirect("/login");
+  
   const {tasks, openModalForAddTask, priority, setPriority, completedTasks} = useTasks();
 
   // const { name, photo, isVerified, bio } = user;
