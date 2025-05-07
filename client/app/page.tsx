@@ -1,23 +1,33 @@
 "use client";
 import { useUserContext } from "@/context/userContext";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChangePasswordForm from "./Components/auth/ChangePasswordForm/ChangePasswordForm";
 import useRedirect from "@/hooks/useUserRedirect";
+import { useTasks } from "@/context/taskContext";
+import Filters from "./Components/Filters/Filters";
+import TaskItem from "./Components/TaskItem/TaskItem";
+import { Task } from "@/utils/types";
+import { filteredTasks } from "@/utils/utilities";
+import {motion} from "framer-motion";
+import { container, item } from "@/utils/animations";
 
 export default function Home() {
-  useRedirect("/login");
-  const {
-    logoutUser,
-    user,
-    handlerUserInput,
-    userState,
-    updateUser,
-    emailVerification,
-    allUsers,
-    deleteUser,
-  } = useUserContext();
-  const { name, photo, isVerified, bio } = user;
+  // useRedirect("/login");
+  // const {
+  //   logoutUser,
+  //   user,
+  //   handlerUserInput,    
+  //   userState,
+  //   updateUser,
+  //   emailVerification,
+  //   allUsers,
+  //   deleteUser,
+  // } = useUserContext();
+
+  const {tasks, openModalForAddTask, priority, setPriority, completedTasks} = useTasks();
+
+  // const { name, photo, isVerified, bio } = user;
 
   // state
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +37,50 @@ export default function Home() {
     setIsOpen(!isOpen);
   };
 
+  // const filtered = filteredTasks(tasks, priority);
+
+  const filtered = tasks.filter((task: Task) => {
+    const taskPriority = task.priority?.toLowerCase().trim();
+    const selectedPriority = priority?.toLowerCase().trim();
+
+    // Debug logs
+    console.log("Selected Priority:", selectedPriority);
+    console.log("Task Priority:", taskPriority);
+
+    if (selectedPriority === "all") return true;
+    return taskPriority === selectedPriority;
+  });
+
+  useEffect(()=>{
+      setPriority("all");
+    },[]);
+
   return (
+    
+    <main className="m-6 h-full">
+      <div className="flex justify-between">
+        <h1 className="text-2xl fond-bold">All Tasks</h1>
+        <Filters />
+      </div>
+
+      <motion.div className="pb-[2rem] mt-6 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[1.5rem]"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      >
+        {filtered.map((task: Task, i: number)=>(
+          <TaskItem key={i} task={task} />
+        ))}
+        <motion.button 
+        className="h-[16rem] w-full py-2 rounded-md text-lg font-medium text-gray-500 border-dashed border-2 border-gray-400
+        hover:bg-gray-300 hover:border-none transition duration-200 ease-in-out"
+        onClick={openModalForAddTask}
+        variants={item}
+        >
+          Add New Task
+        </motion.button>
+      </motion.div>
+    </main>
     // <main className="py-[2rem] mx-[10rem]">
     //   <header className="flex justify-between">
     //     <h1 className="text-[2rem] font-bold">
@@ -128,6 +181,5 @@ export default function Home() {
     //     </div>
     //   </div>
     // </main>
-    <main></main>
   );
 }

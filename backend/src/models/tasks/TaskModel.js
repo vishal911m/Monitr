@@ -4,7 +4,7 @@ const TaskSchema = new mongoose.Schema({
     title: {
       type: String,
       required: [true, "Please provide a title"],
-      unique: true,
+      // unique: false,
     },
 
     description: {

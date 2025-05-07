@@ -1,4 +1,5 @@
 "use client"
+import { useTasks } from '@/context/taskContext';
 import { useUserContext } from '@/context/userContext'
 import { github, moon, star } from '@/utils/icons';
 import { profile } from 'console';
@@ -9,6 +10,7 @@ import { FaGithub, FaMoon, FaUser } from 'react-icons/fa';
 function Header() {
   // const userId = useUserContext().user._id;
   const {user} = useUserContext();
+  const {openModalForAddTask, activeTasks} = useTasks();
   const {name} = user;
   const userId = user._id;
   
@@ -21,7 +23,7 @@ function Header() {
       <p className='text-sm'>
         {userId ? (
           <>
-          You have <span className="font-bold text-[#3aafae]">5</span>
+          You have <span className="font-bold text-[#3aafae]">{activeTasks.length}</span>
           &nbsp;active tasks
           </>
         ) : (
@@ -31,8 +33,10 @@ function Header() {
     </div>
     <div className='h-[50px] flex items-center gap-[10.4rem]'>
       <button className='px-8 py-3 bg-[#3aafae] text-white rounded-[50px]
-      hover:bg-[#00a1f1] hover:text-white transition-all duration-200 ease-in'>
-        Create a new task 
+      hover:bg-[#00a1f1] hover:text-white transition-all duration-200 ease-in'
+      onClick={openModalForAddTask}
+      >
+        {userId ? "Create a new task" : "Login / Register"} 
       </button>
       <div className='flex gap-4 items-center'>
         <Link 

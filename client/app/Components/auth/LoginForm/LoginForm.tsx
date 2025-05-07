@@ -3,7 +3,7 @@ import { useUserContext } from "@/context/userContext";
 import React from "react";
 
 function LoginForm() {
-  const { loginUser, userState, handlerUserInput } = useUserContext();
+  const { loginUser, userState, handleUserInput } = useUserContext();
   const { email, password } = userState;
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -33,7 +33,7 @@ function LoginForm() {
             type="text"
             id="email"
             value={email}
-            onChange={(e) => handlerUserInput("email")(e)}
+            onChange={(e) => handleUserInput("email")(e)}
             name="email"
             className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
             placeholder="johndoe@gmail.com"
@@ -47,7 +47,7 @@ function LoginForm() {
             type={showPassword ? "text" : "password"}
             id="password"
             value={password}
-            onChange={(e) => handlerUserInput("password")(e)}
+            onChange={(e) => handleUserInput("password")(e)}
             name="password"
             className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
             placeholder="***************"

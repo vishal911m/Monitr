@@ -119,6 +119,8 @@ export const UserContextProvider = ({ children }) => {
 
       toast.success("User logged out successfully");
 
+      setUser({});
+
       // redirect to login page
       router.push("/login");
     } catch (error) {
@@ -320,7 +322,7 @@ export const UserContextProvider = ({ children }) => {
   };
 
   // dynamic form handler
-  const handlerUserInput = (name) => (e) => {
+  const handleUserInput = (name) => (e) => {
     const value = e.target.value;
 
     setUserState((prevState) => ({
@@ -375,7 +377,7 @@ export const UserContextProvider = ({ children }) => {
       value={{
         registerUser,
         userState,
-        handlerUserInput,
+        handleUserInput,
         loginUser,
         logoutUser,
         userLoginStatus,
