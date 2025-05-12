@@ -4,7 +4,8 @@ import { useUserContext } from '@/context/userContext'
 import { github, moon, star } from '@/utils/icons';
 import { profile } from 'console';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import { useRouter } from "next/navigation";
 import { FaGithub, FaMoon, FaUser } from 'react-icons/fa';
 
 function Header() {
@@ -13,6 +14,8 @@ function Header() {
   const {openModalForAddTask, activeTasks} = useTasks();
   const {name} = user;
   const userId = user._id;
+
+  const router = useRouter();
   
   return <header className='px-6 my-4 w-full flex items-center justify-between bg-[#f9f9f9]'>
     <div>
@@ -34,7 +37,13 @@ function Header() {
     <div className='h-[50px] flex items-center gap-[10.4rem]'>
       <button className='px-8 py-3 bg-[#3aafae] text-white rounded-[50px]
       hover:bg-[#00a1f1] hover:text-white transition-all duration-200 ease-in'
-      onClick={openModalForAddTask}
+      onClick={() => {
+        if (userId) {
+          openModalForAddTask();
+        } else {
+          router.push("/login");
+        }
+      }}
       >
         {userId ? "Create a new task" : "Login / Register"} 
       </button>
