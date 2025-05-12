@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { container, item } from "@/utils/animations";
 
 export default function Home() {
+  useRedirect("/login");
 
   const {openModalForAddTask, priority, completedTasks, setPriority} = useTasks();
   const [isOpen, setIsOpen] = useState(false);
