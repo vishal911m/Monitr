@@ -9,7 +9,8 @@ const UserContext = React.createContext();
 axios.defaults.withCredentials = true;
 
 export const UserContextProvider = ({ children }) => {
-  const serverUrl = "http://localhost:8000";
+  // const serverUrl = "http://localhost:8000";
+  const serverUrl = "https://monitr-fm9f.onrender.com";
 
   const router = useRouter();
 
