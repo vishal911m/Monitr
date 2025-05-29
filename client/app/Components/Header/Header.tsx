@@ -49,7 +49,7 @@ function Header() {
       </button>
       <div className='flex gap-4 items-center'>
         <Link 
-        href="https://github.com/vishal911m"
+        href="https://github.com/vishal911m?tab=repositories"
         passHref
         target='_blank'
         rel='noopener noreferrer'
@@ -58,7 +58,7 @@ function Header() {
           <FaGithub />
         </Link>
         <Link
-             href="https://github.com/Maclinz/taskfyer"
+             href="https://github.com/vishal911m/Monitr"
              passHref
              target="_blank"
              rel="noopener noreferrer"
@@ -67,7 +67,7 @@ function Header() {
          <FaMoon />
         </Link>
         <Link
-             href="https://github.com/Maclinz/taskfyer"
+             href="https://github.com/vishal911m/MonitR-Backend"
              passHref
              target="_blank"
              rel="noopener noreferrer"
