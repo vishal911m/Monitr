@@ -52,7 +52,12 @@ function TaskItem({task}: TaskItemProps) {
               openModalForEditTask(task);
             }}
           ><FaEdit /> </button>
-          <button className='text-[#f65314]'><FaTrash /> </button>
+          <button 
+            className='text-[#f65314]'
+            onClick={()=>{
+              deleteTask(task._id);
+            }}  
+          ><FaTrash /> </button>
           </div>
         </div>
       </div>
