@@ -21,7 +21,7 @@ function Header() {
     <div>
       <h1 className='text-lg font-medium'>
         <span role='img' aria-label='wave'>👋</span>
-        {userId ? `Welcome, ${name}` : 'Welcome to Monitr'}
+        {userId ? `Welcome, ${name}` : 'Welcome to MonitR'}
       </h1>
       <p className='text-sm'>
         {userId ? (
