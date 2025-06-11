@@ -47,7 +47,7 @@ function Profile() {
         <div className='text-gray-400'>
           <p>In Progress:</p>
           <p className='pl-4 relative flex gap-2'>
-            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-purple-500 rounded-[5px]'></span>
+            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-[#3AAFAE] rounded-[5px]'></span>
             <span className='font-medium text-4xl text-[#333]'>
               {activeTasks.length}
             </span>
@@ -57,7 +57,7 @@ function Profile() {
         <div className='text-gray-400'>
           <p>Open Tasks:</p>
           <p className='pl-4 relative flex gap-2'>
-            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-purple-500 rounded-[5px]'></span>
+            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-orange-400 rounded-[5px]'></span>
             <span className='font-medium text-4xl text-[#333]'>
               {activeTasks.length}
             </span>
@@ -67,7 +67,7 @@ function Profile() {
         <div className='text-gray-400'>
           <p>Completed:</p>
           <p className='pl-4 relative flex gap-2'>
-            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-purple-500 rounded-[5px]'></span>
+            <span className='absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[-50%] bg-green-400 rounded-[5px]'></span>
             <span className='font-medium text-4xl text-[#333]'>
               {completedTasks.length}
             </span>
