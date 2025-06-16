@@ -9,6 +9,7 @@ import MainContentLayout from "@/providers/MainContentLayout";
 import SidebarProvider from "@/providers/SidebarProvider";
 import MainLayout from "@/providers/MainLayout";
 import Link from "next/link";
+import DeleteConfirmationModal from "./Components/DeleteConfirmationModal/DeleteConfirmationModal";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
           <MainContentLayout>
             <MainLayout>{children}</MainLayout>
             <SidebarProvider />
+            <DeleteConfirmationModal />
           </MainContentLayout>
         </div>
       </div>

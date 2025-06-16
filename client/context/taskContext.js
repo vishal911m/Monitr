@@ -21,6 +21,9 @@ export const TasksProvider = ({children})=>{
   const [activeTask, setActiveTask] = useState(null);
   const [modalMode, setModalMode] = useState("");
   const [profileModal, setProfileModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   const openModalForAddTask = () =>{
     setModalMode("add");
@@ -119,11 +122,24 @@ export const TasksProvider = ({children})=>{
       const newTasks = tasks.filter((tsk)=> tsk._id !== taskId);
 
       setTasks(newTasks);
+
+      toast.success("Task deleted successfully");
     } catch (error) {
       console.log("Error deleting stock", error);
+      toast.error("Failed to delete task");
     };
     setLoading(false);
   };
+
+  const openDeleteModal = (task) => {
+  setTaskToDelete(task); // ✅ correct task object
+  setShowDeleteModal(true);
+};
+
+  const closeDeleteModal = () => {
+  setTaskToDelete(null);
+  setShowDeleteModal(false);
+};
 
   const handleInput = (name) => (e)=>{
     if (name === "setTask") {
@@ -165,9 +181,13 @@ export const TasksProvider = ({children})=>{
       closeModal,
       modalMode,
       openProfileModal,
+      openDeleteModal,
+      closeDeleteModal,
       activeTasks,
       completedTasks,
-      profileModal
+      profileModal,
+      showDeleteModal,           
+      taskToDelete               
       }}>
       {children}
     </TasksContext.Provider>

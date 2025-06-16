@@ -11,6 +11,8 @@ import { Task } from "@/utils/types";
 import { filteredTasks } from "@/utils/utilities";
 import {motion} from "framer-motion";
 import { container, item } from "@/utils/animations";
+import DeleteConfirmationModal from "./Components/DeleteConfirmationModal/DeleteConfirmationModal";
+
 
 export default function Home() {
   useRedirect("/login");
