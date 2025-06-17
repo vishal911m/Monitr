@@ -31,13 +31,13 @@ export default function Home() {
   },[]);
 
   return (
-    <main className="m-6 h-full">
-      <div className="flex justify-between">
+    <main className="pending m-6 h-full">
+      <div className="pending flex justify-between">
         <h1 className="text-2xl fond-bold">Pending Tasks</h1>
         <Filters />
       </div>
 
-      <motion.div className="pb-[2rem] mt-6 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[1.5rem]"
+      <motion.div className="pending pb-[2rem] mt-6 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[1.5rem]"
       variants={container}
       initial="hidden"
       animate="visible"

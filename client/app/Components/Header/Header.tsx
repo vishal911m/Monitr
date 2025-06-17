@@ -17,7 +17,7 @@ function Header() {
 
   const router = useRouter();
   
-  return <header className='px-6 my-4 w-full flex items-center justify-between bg-[#f9f9f9]'>
+  return <header className='Header px-6 my-4 w-full flex items-center justify-between bg-[#f9f9f9]'>
     <div>
       <h1 className='text-lg font-medium'>
         <span role='img' aria-label='wave'>👋</span>

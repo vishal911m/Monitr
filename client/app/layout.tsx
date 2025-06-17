@@ -39,9 +39,9 @@ export default function RootLayout({
       <body className={inter.className}>
       <UserProvider>
       <Toaster position="top-center" />
-      <div className="h-full flex overflow-hidden">
+      <div className="layout h-full flex overflow-hidden">
         <MiniSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="layout flex-1 flex flex-col">
           <Header />
           <MainContentLayout>
             <MainLayout>{children}</MainLayout>
