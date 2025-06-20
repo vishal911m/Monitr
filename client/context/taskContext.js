@@ -156,6 +156,7 @@ export const TasksProvider = ({children})=>{
   const activeTasks = tasks.filter((task)=> !task.completed);
 
   useEffect(()=>{
+    setTasks([]);
     getTasks();
     // getTask("");
   }, [userId])
