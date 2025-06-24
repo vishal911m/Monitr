@@ -141,13 +141,27 @@ export const TasksProvider = ({children})=>{
   setShowDeleteModal(false);
 };
 
-  const handleInput = (name) => (e)=>{
-    if (name === "setTask") {
-      setTask(e);
-    } else {
-      setTask({...task, [name]: e.target.value});
+  const handleInput = (name) => (e) => {
+  if (name === "setTask") {
+    setTask(e);
+  } else {
+    let value = e.target.value;
+
+    // ✅ Convert string to boolean only for "completed"
+    if (name === "completed") {
+      value = value === "true";
     }
+
+    setTask({ ...task, [name]: value });
+  }
   };
+  // const handleInput = (name) => (e)=>{
+  //   if (name === "setTask") {
+  //     setTask(e);
+  //   } else {
+  //     setTask({...task, [name]: e.target.value});
+  //   }
+  // };
 
   //get completed tasks
   const completedTasks = tasks.filter((task)=> task.completed);
