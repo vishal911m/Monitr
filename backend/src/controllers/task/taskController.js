@@ -99,7 +99,11 @@ export const updateTask = asyncHandler(async(req, res)=>{
     task.dueDate = dueDate || task.dueDate;
     task.priority = priority || task.priority;
     task.status = status || task.status;
-    task.completed = completed || task.completed;
+    // task.completed = completed || task.completed;
+    if (typeof completed === "boolean") {
+      task.completed = completed;
+    }
+
 
     await task.save();
 
