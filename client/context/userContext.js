@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true;
 
 export const UserContextProvider = ({ children }) => {
   // const serverUrl = "http://localhost:8000";
-  const serverUrl = "https://monitr-119w.onrender.com";
+  const serverUrl = "https://monitr-ayyp.onrender.com";
 
   const router = useRouter();
 

@@ -8,7 +8,7 @@ import { edit } from '@/utils/icons';
 const TasksContext = createContext();
 
 // const serverUrl = "http://localhost:8000/api/v1";
-const serverUrl = "https://monitr-119w.onrender.com/api/v1";
+const serverUrl = "https://monitr-ayyp.onrender.com/api/v1";
 
 
 export const TasksProvider = ({children})=>{
