@@ -23,9 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// error handler middleware
-app.use(errorHandler);
-
 //routes
 const routeFiles = fs.readdirSync("./src/routes");
 
@@ -39,6 +36,9 @@ routeFiles.forEach((file) => {
       console.log("Failed to load route file", err);
     });
 });
+
+// error handler middleware
+app.use(errorHandler);
 
 const server = async () => {
   try {
