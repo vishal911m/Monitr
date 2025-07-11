@@ -5,14 +5,14 @@ export const createTask = asyncHandler(async (req,res)=>{
   // console.log(req.user._id)
   // res.status(200).json({message: "Create Task"});
   try {
-    const {title, description, dueDate, priority, status} = req.body;
+    const {title, description, dueDate, priority, status, completed} = req.body;
 
     if (!description || description.trim() === " ") {
       res.status(400).json({message: "Description is required! "});
     }
 
     const task = new TaskModel({
-      title, description, dueDate, priority, status,
+      title, description, dueDate, priority, status, completed,
       user: req.user._id,
     })
 
@@ -99,11 +99,9 @@ export const updateTask = asyncHandler(async(req, res)=>{
     task.dueDate = dueDate || task.dueDate;
     task.priority = priority || task.priority;
     task.status = status || task.status;
-    // task.completed = completed || task.completed;
     if (typeof completed === "boolean") {
       task.completed = completed;
     }
-
 
     await task.save();
 
