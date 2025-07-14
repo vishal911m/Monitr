@@ -99,6 +99,14 @@ export const updateTask = asyncHandler(async(req, res)=>{
       res.status(401).json({message: "Not authorised!"});
     }
 
+    // ✅ Check for duplicate title (if title is changing)
+    if (title && title !== task.title) {
+      const duplicate = await TaskModel.findOne({ title, user: userId });
+      if (duplicate && duplicate._id.toString() !== id) {
+        return res.status(400).json({ message: "Task already exists" });
+      }
+    }
+
     //update the task with new data if provided or keep the old data
     task.title = title || task.title;
     task.description = description || task.description;
@@ -114,7 +122,7 @@ export const updateTask = asyncHandler(async(req, res)=>{
     return res.status(200).json(task);
   } catch (error) {
     console.log("Error in updateTask: ", error.message);
-    res.status(500).json({message: error.message});
+    return res.status(500).json({message: error.message});
   }
 });
 
