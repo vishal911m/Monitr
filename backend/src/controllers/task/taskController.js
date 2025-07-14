@@ -22,7 +22,7 @@ export const createTask = asyncHandler(async (req,res)=>{
   } catch (error) {
     if (error.code === 11000) {
       return res.status(400).json({
-        message: `Task with the title "${req.body.title}" already exists for this user.`,
+        message: `Task with the title "${req.body.title}" already exists.`,
       });
     }
 
