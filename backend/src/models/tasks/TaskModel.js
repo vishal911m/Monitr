@@ -43,6 +43,9 @@ const TaskSchema = new mongoose.Schema({
   {timestamps: true}
 );
 
+// ✅ Add this line below the schema definition
+TaskSchema.index({ user: 1, title: 1 }, { unique: true });
+
 const TaskModel = mongoose.model("Task", TaskSchema);
 
 export default TaskModel;
