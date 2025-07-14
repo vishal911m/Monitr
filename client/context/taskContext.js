@@ -89,7 +89,13 @@ export const TasksProvider = ({children})=>{
       toast.success("Task created successfully");
       // getTask();
     } catch (error) {
-      console.log("Error creating task", error)
+      console.log("Error creating task", error);
+
+      if (error.response && error.response.data && error.response.data.message) {
+      toast.error(error.response.data.message); // 👈 Show backend error (like duplicate)
+    } else {
+      toast.error("Something went wrong while creating the task");
+    }
     };
     setLoading(false);
   };
