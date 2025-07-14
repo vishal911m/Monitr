@@ -116,6 +116,12 @@ export const TasksProvider = ({children})=>{
       setTasks(newTasks);
     } catch (error) {
       console.log("Error updating task", error);
+
+      if (error.response && error.response.data && error.response.data.message) {
+      toast.error(error.response.data.message); // 👈 Backend message (e.g. duplicate title)
+    } else {
+      toast.error("Something went wrong while updating the task");
+    }
     };
     // setLoading(false);
   };
