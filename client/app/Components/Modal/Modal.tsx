@@ -31,16 +31,21 @@ function Modal() {
     }
   },[modalMode, activeTask])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async  (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
 
-    if (modalMode === "edit") {
-      updateTask(task);
-    } else if(modalMode === "add"){
-      createTask(task);
+    let success = false;
+
+    if(modalMode === "edit"){
+      success = await updateTask(task);
+    } else if (modalMode === "add") {
+      success = await createTask(task);
     }
-    closeModal();
+    if (success) {
+    closeModal(); // ✅ Only close if success
   }
+  }
+  
   return (
     <div className='fixed left-0 top-0 z-50 h-full w-full bg-[#333]/30 overflow-hidden'>
       <form 

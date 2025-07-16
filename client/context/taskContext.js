@@ -87,6 +87,8 @@ export const TasksProvider = ({children})=>{
 
       setTasks([...tasks, res.data]);
       toast.success("Task created successfully");
+      setLoading(false);
+      return true; // ✅ Success
       // getTask();
     } catch (error) {
       console.log("Error creating task", error);
@@ -98,6 +100,7 @@ export const TasksProvider = ({children})=>{
     }
     };
     setLoading(false);
+    return false; // ❌ Failure
   };
   
   const updateTask = async (task) => {
@@ -114,6 +117,8 @@ export const TasksProvider = ({children})=>{
       toast.success("Task updated successfully");      
 
       setTasks(newTasks);
+      setLoading(false);
+      return true; // ✅ Success
     } catch (error) {
       console.log("Error updating task", error);
 
@@ -123,7 +128,8 @@ export const TasksProvider = ({children})=>{
       toast.error("Something went wrong while updating the task");
     }
     };
-    // setLoading(false);
+    setLoading(false);
+    return false; // ❌ Failure
   };
 
   const deleteTask = async (taskId)=>{
