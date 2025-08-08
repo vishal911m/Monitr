@@ -46,7 +46,7 @@ export default function RootLayout({
           <MainContentLayout>
             <MainLayout>{children}</MainLayout>
             <SidebarProvider />
-            <DeleteConfirmationModal />
+            {/* <DeleteConfirmationModal /> */}
           </MainContentLayout>
         </div>
       </div>
